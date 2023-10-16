@@ -1,0 +1,20 @@
+{
+  "name": "meetify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "buildClient": "cd frontend && yarn build",
+    "startClient": "cd frontend && yarn dev",
+    "startServer": "cd backend && yarn start",
+    "watchServer": "cd backend && yarn watch",
+    "dev": "concurrently \"yarn run watchServer\" \"yarn run startClient\"",
+    "deploy": "yarn buildClient && yarn startServer",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.1"
+  }
+}
