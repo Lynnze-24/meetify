@@ -5,8 +5,7 @@
   "builds": [
     {
       "src": "./backend/index.js",
-      "use": "@vercel/node",
-      "command": ""
+      "use": "@vercel/node"
     }
   ],
   "routes": [
