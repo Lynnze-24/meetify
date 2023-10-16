@@ -9,10 +9,7 @@
     }
   ],
   "build": {
-    "command": "npm run deploy"
-  },
-  "install": {
-    "command": "npm run installApp"
+    "command": "npm run publishApp"
   },
   "routes": [
     {
