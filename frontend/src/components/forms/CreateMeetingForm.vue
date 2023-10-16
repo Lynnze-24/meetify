@@ -4,7 +4,7 @@ const props = defineProps<{
   closeModal: () => void;
   addMeeting: (event: CalendarEventMongo) => void;
 }>();
-import { onBeforeMount, ref } from 'vue';
+import { ref } from 'vue';
 import BaseInput from '../ui/common/BaseInput.vue';
 import BaseButton from '../ui/common/BaseButton.vue';
 import BaseTextArea from '../ui/common/BaseTextArea.vue';
@@ -17,6 +17,7 @@ import Axios from '@/utils/axios';
 import BaseSelect from '../ui/common/BaseSelect.vue';
 import BaseCalendarInput from '../ui/common/BaseCalendarInput.vue';
 import BaseTimePicker from '../ui/common/BaseTimePicker.vue';
+import timeZoneArr from '@/assets/timezoneData';
 
 const formVals = ref({
   name: '',
@@ -29,8 +30,6 @@ const formVals = ref({
 });
 
 const isCreating = ref<boolean>(false);
-
-const timeZonesRef = ref<string[]>([]);
 
 async function createGoogleMeeting() {
   try {
@@ -80,16 +79,6 @@ async function createGoogleMeeting() {
     props.closeModal();
   }
 }
-
-onBeforeMount(async () => {
-  console.log(props.googleId);
-  const r = fetch('/timezoneData.txt');
-  const tz = (await r).text();
-  timeZonesRef.value = (await tz)
-    .split('\r\n')
-    .sort()
-    .filter((x) => x !== '');
-});
 </script>
 
 <template>
@@ -101,7 +90,7 @@ onBeforeMount(async () => {
       placeholder="Event Topic"
     ></BaseInput>
     <BaseSelect
-      :options="timeZonesRef"
+      :options="timeZoneArr"
       v-model="formVals.timezone"
       placeholder="Timezones"
     />
