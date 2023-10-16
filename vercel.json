@@ -5,13 +5,15 @@
   "builds": [
     {
       "src": "./backend/index.js",
-      "use": "@vercel/node",
-      "config": {
-        "buildCommand": "yarn run deploy",
-        "installCommand": "yarn run installApp"
-      }
+      "use": "@vercel/node"
     }
   ],
+  "build": {
+    "command": "npm run deploy"
+  },
+  "install": {
+    "command": "npm run installApp"
+  },
   "routes": [
     {
       "src": "/(.*)",
