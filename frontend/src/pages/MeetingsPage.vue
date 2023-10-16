@@ -208,9 +208,9 @@ async function deletemeeting(meetingId:string){
     <BaseModal :visible="showModal" @close-modal="closeModal" >
       <CreateMeetingForm :addMeeting="addMeeting" :closeModal="closeModal"  :googleId="id" />
       </BaseModal>
-    <FooterHome />
+   
   </div>
-  
+  <FooterHome />
 </template>
 
 <style scoped>

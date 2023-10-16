@@ -77,6 +77,19 @@ const closeModal = () => {
   line-height: 3rem;
 }
 
+@media screen and (max-width: 400px) {
+  .modal-content {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .modal-close-button {
+    border-radius: 0;
+  }
+}
+
 .modal-close-button:hover {
   background-color: white;
   color: var(--danger);

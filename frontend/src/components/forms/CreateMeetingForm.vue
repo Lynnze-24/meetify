@@ -118,6 +118,18 @@ form {
   min-width: 35rem;
 }
 
+@media screen and (max-width: 530px) {
+  form {
+    min-width: 30rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  form {
+    min-width: 25rem;
+  }
+}
+
 .formBtn {
   font-size: clamp(1, 1.2vw, 1.3rem);
   height: 5rem;
