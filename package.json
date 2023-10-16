@@ -12,6 +12,7 @@
     "startServer": "node backend/index.js",
     "watchServer": "nodemon backend/index.js",
     "dev": "concurrently \"yarn run watchServer\" \"yarn run startClient\"",
+    "buildApp": "yarn installApp && yarn buildClient",
     "deploy": "yarn buildClient && yarn startServer",
     "publishApp": "yarn installApp && yarn deploy ",
     "test": "echo \"Error: no test specified\" && exit 1"
