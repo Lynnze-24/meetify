@@ -28,7 +28,7 @@ function handleInput(event: Event) {
     (event as InputEvent).data === ' ' &&
     (event as InputEvent).inputType === 'insertText'
   ) {
-    const changedVal = (inputRef.value as HTMLElement)?.innerHTML.replaceAll(
+    const changedVal = (inputRef.value as HTMLElement)?.innerHTML.replace(
       '&nbsp;',
       ''
     );
