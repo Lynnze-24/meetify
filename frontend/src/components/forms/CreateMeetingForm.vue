@@ -18,6 +18,7 @@ import BaseSelect from '../ui/common/BaseSelect.vue';
 import BaseCalendarInput from '../ui/common/BaseCalendarInput.vue';
 import BaseTimePicker from '../ui/common/BaseTimePicker.vue';
 import timeZoneArr from '@/assets/timezoneData';
+import BaseEmailMultiInput from '../ui/common/BaseEmailMultiInput.vue';
 
 const formVals = ref({
   name: '',
@@ -104,11 +105,10 @@ async function createGoogleMeeting() {
       <BaseTimePicker v-model="formVals.endTime" placeholder="End Time" />
     </div>
 
-    <BaseTextArea
-      type="text"
+    <BaseEmailMultiInput
       v-model="formVals.attendees"
       placeholder="Attendees..."
-    ></BaseTextArea>
+    ></BaseEmailMultiInput>
     <BaseButton :loading="isCreating" class-name="formBtn">Confirm</BaseButton>
   </form>
 </template>

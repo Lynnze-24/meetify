@@ -124,6 +124,7 @@ async function deletemeeting(meetingId:string){
 </script>
 
 <template>
+  <div class="overallWrap">
   <div class="pageCon">
     <div class="content">
       <div class="topCon">
@@ -211,6 +212,7 @@ async function deletemeeting(meetingId:string){
    
   </div>
   <FooterHome />
+</div>
 </template>
 
 <style scoped>

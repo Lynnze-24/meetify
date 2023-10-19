@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const Axios = axios.create({
-  baseURL: 'https://meetify-s362.onrender.com/api', //'http://localhost:4000/api'
+  baseURL: 'http://localhost:4000/api', //'https://meetify-s362.onrender.com/api'
   timeout: 10000,
 });
 

@@ -137,13 +137,20 @@ async function createGoogleMeeting(req, res, next) {
       return res.status(400).send('Bad Request.googleId is invalid');
     }
 
+    const modifiedEvent = {
+      ...event,
+      attendees: event.attendees.map((x) => ({ email: x })),
+    };
+
     oauth2Client.setCredentials({ refresh_token: tokenData.token });
     const calendar = google.calendar('v3');
     const response = await calendar.events.insert({
       conferenceDataVersion: 1,
       calendarId: 'primary',
       auth: oauth2Client,
-      requestBody: event,
+      requestBody: {
+        ...modifiedEvent,
+      },
     });
     const { id, start, end, hangoutLink, summary, creator } = response.data;
     const docCreated = await CalendarEvent.create({
