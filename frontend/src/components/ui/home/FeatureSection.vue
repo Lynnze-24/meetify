@@ -31,7 +31,7 @@
       <p>
         Tired of manually creating Google Meet links for your events? Our app
         automates the process, generating Google Meet links paired with calendar
-        events. Make your life a breeze with Meet Link Generator!
+        events. Make your life a breeze with TutorRoom Meetify!
       </p>
     </div>
   </section>

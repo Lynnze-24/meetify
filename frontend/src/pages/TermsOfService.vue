@@ -91,11 +91,11 @@ function goback() {
           <p>Effective Date: Oct 5 2023.</p>
         </div>
         <p>
-          These Terms of Service ("Terms") govern your use of Meetify, a web
-          application ("the App"), provided by Meetify.Co.Ltd ("we," "our," or
-          "us"). By accessing or using the App, you agree to comply with and be
-          bound by these Terms. If you do not agree to these Terms, please do
-          not use the App.
+          These Terms of Service ("Terms") govern your use of TutorRoom Meetify,
+          a web application ("the App"), provided by TutorRoom Meetify.Co.Ltd
+          ("we," "our," or "us"). By accessing or using the App, you agree to
+          comply with and be bound by these Terms. If you do not agree to these
+          Terms, please do not use the App.
         </p>
       </header>
       <main>
@@ -108,10 +108,12 @@ function goback() {
       </main>
       <footer>
         <p>
-          By using Meetify, you agree to these Terms of Service. If you do not
-          agree to these Terms, please do not use the App.
+          By using TutorRoom Meetify, you agree to these Terms of Service. If
+          you do not agree to these Terms, please do not use the App.
         </p>
-        <p class="lastUpdate">Last Updated: Oct 5 2023 by Meetify Team.</p>
+        <p class="lastUpdate">
+          Last Updated: Oct 5 2023 by TutorRoom Meetify Team.
+        </p>
         <p @click="goback" class="homelink" to="/home">Go Back</p>
       </footer>
     </div>

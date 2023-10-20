@@ -2,9 +2,8 @@
 import { isValidEmail } from '@/utils/validate';
 import { ref, type VNodeRef } from 'vue';
 const props = defineProps<{
-  modelValue: string | number | undefined;
+  modelValue: string[];
   placeholder: string;
-  modelModifiers?: { emailValidate: Boolean };
 }>();
 
 interface ValueRef {
@@ -12,59 +11,62 @@ interface ValueRef {
   valid: boolean;
 }
 
-const valuesRef = ref<ValueRef[]>([{ email: 'aung@gmail.com', valid: true }]);
+const valuesRef = ref<ValueRef[]>([]);
 
 const inputRef = ref<HTMLElement | undefined>();
 const emit = defineEmits(['update:modelValue']);
 
-function emitValue(e: Event) {
-  let value = (e.target as HTMLInputElement).value;
-  emit('update:modelValue', value);
+function emitValue() {
+  emit('update:modelValue', valuesRef?.value.map(x => x.email));
 }
 
-function handleInput(event: Event) {
-  console.log(inputRef.value?.innerHTML, event);
-  if (
-    (event as InputEvent).data === ' ' &&
-    (event as InputEvent).inputType === 'insertText'
-  ) {
-    const changedVal = (inputRef.value as HTMLElement)?.innerHTML.replace(
+
+
+function keyPressHandler(e: KeyboardEvent) {
+  console.log(e)
+  if (e.code === 'Space' || e.code === 'Enter') {
+    const changedVal = (inputRef.value as HTMLElement)?.innerText.replaceAll(
       '&nbsp;',
       ''
-    );
-    if (!changedVal) return;
+    ).trim();
+    console.log(changedVal, 'add email');
+    if (!changedVal){
+      (inputRef.value as HTMLElement).innerHTML = '';
+      return;
+    } 
     valuesRef.value.push({
       email: changedVal,
       valid: isValidEmail(changedVal),
     });
     (inputRef.value as HTMLElement).innerHTML = '';
+    emitValue()
   }
-  console.log(valuesRef.value);
-}
-
-function focusHandler() {
-  (inputRef.value as HTMLElement).focus();
-  console.log('focussed');
+  if(e.code==='Backspace' &&  (inputRef.value as HTMLElement).innerHTML === ''){
+     if(valuesRef.value.length) valuesRef.value.length = valuesRef.value.length -1;
+      console.log('backspace')
+      emitValue()
+  }
+  
 }
 </script>
 
 <template>
   <div class="formControl">
-    <p
-      tabindex="0"
-      @focus="focusHandler"
-      @input="handleInput"
-      class="textWrap"
-      :contenteditable="true"
-    >
-      <span
+    <p @click="()=>(inputRef as HTMLElement).focus()" class="textWrap">
+      <p
         :class="{ invalid: !v.valid }"
         v-for="v of valuesRef"
         :contenteditable="false"
-        >{{ v.email }}</span
+        >{{ v.email }}</p
       >
 
-      <span ref="inputRef" :contenteditable="true" class="input"></span>
+      <p
+        ref="inputRef"
+        @keyup="keyPressHandler"
+        :contenteditable="true"
+        class="input"
+      ></p>
+      <p v-if="valuesRef.length < 1 && !inputRef?.innerText" class="placeholder">Attendees</p>
     </p>
   </div>
 </template>
@@ -89,31 +91,43 @@ function focusHandler() {
   color: #323232;
   white-space: wrap;
   max-width: 35rem;
-  line-height: 2.5rem;
+  overflow-y: auto;
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.textWrap span:not(.input) {
+.textWrap p:not(.input,.placeholder) {
   background-color: var(--primary);
   color: white;
   border-radius: 0.5rem;
-  padding: 0.05rem 0.5rem;
-  margin-right: 0.5rem;
+  padding: 0.005rem 0.5rem;
+  height: max-content;
+ 
 }
 
-span.invalid:not(.input) {
+p.invalid:not(.input) {
   background-color: var(--danger);
+  
 }
 
 .input {
   display: inline;
 }
 
-.formControl .textWrap:focus {
+.formControl .textWrap:focus-within {
   border-color: var(--primary);
+}
+
+.formControl .textWrap:focus-within .placeholder{
+  display: none;
 }
 
 .formControl .placeholder {
   color: #c4c4c4;
-  font-size: 14px;
+  font-size: 1.4rem;
+  font-weight: normal;
+  font-family: serif;
 }
 </style>

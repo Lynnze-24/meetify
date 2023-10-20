@@ -8,7 +8,7 @@
       <div class="logo">
         <img src="/logo.png" alt="heroBg" />
       </div>
-      <p>© 2023 Meetify Co.Ltd. All rights reserved.</p>
+      <p>© 2023 TutorRoom Meetify Co.Ltd. All rights reserved.</p>
       <div class="links">
         <router-link to="/privacypolicy">Privacy Policy</router-link>
         <span>&nbsp;|&nbsp;</span>

@@ -4,6 +4,7 @@
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
+    "lib": ["ES6", "DOM", "ES2021.String"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

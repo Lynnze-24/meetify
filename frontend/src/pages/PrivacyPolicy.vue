@@ -82,9 +82,9 @@ function goback() {
         <p>
           This Privacy Policy describes how [Your Company Name] ("we," "our," or
           "us") collects, uses, and protects your personal information when you
-          use the Meetify web application ("the App"). By using the App, you
-          agree to the practices described in this Privacy Policy. If you do not
-          agree to this Privacy Policy, please do not use the App.
+          use the TutorRoom Meetify web application ("the App"). By using the
+          App, you agree to the practices described in this Privacy Policy. If
+          you do not agree to this Privacy Policy, please do not use the App.
         </p>
       </header>
       <main>
@@ -97,11 +97,17 @@ function goback() {
       </main>
       <footer>
         <p>
-          By using the Meetify web application, you consent to the practices
-          described in this Privacy Policy. If you do not agree to this Privacy
-          Policy, please do not use the App.
+          <span class="dis">Disclosure</span>: TutorRoom Meetify's use and
+          transfer to any other app of information received from Google APIs
+          will adhere to
+          <a
+            href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes"
+            >Google API Services User Data Policy</a
+          >, including the Limited Use requirements.
         </p>
-        <p class="lastUpdate">Last Updated: Oct 5 2023 by Meetify Team.</p>
+        <p class="lastUpdate">
+          Last Updated: Oct 5 2023 by TutorRoom Meetify Team.
+        </p>
         <p @click="goback" class="homelink" to="/home">Go Back</p>
       </footer>
     </div>
@@ -109,6 +115,10 @@ function goback() {
 </template>
 
 <style scoped>
+.dis {
+  font-weight: 900;
+  text-decoration: underline;
+}
 .wrapper {
   background-color: var(--secondary);
   line-height: 2.3rem;

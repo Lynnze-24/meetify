@@ -27,7 +27,7 @@ const formVals = ref({
   startTime: '',
   endTime: '',
   end: null,
-  attendees: '',
+  attendees: [] as string[],
 });
 
 const isCreating = ref<boolean>(false);
@@ -57,7 +57,7 @@ async function createGoogleMeeting() {
         dateTime: (formVals.value?.end as Date).toISOString(),
         timeZone: formVals.value?.timezone,
       },
-      attendees: formVals.value?.attendees ? [formVals.value?.attendees] : [],
+      attendees: formVals.value?.attendees,
       conferenceData: {
         createRequest: {
           requestId: randomID('calendarEvent'),
